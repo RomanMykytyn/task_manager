@@ -21,6 +21,13 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+var expressWs = require('express-ws')(app, server);
+
+app.ws('/', function(ws, req, next) {
+  ws.on('message', function(msg) {
+    console.log('msg:', msg)
+  })
+})
 /**
  * Listen on provided port, on all network interfaces.
  */
