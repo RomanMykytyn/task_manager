@@ -10,10 +10,19 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-session": "^1.16.1",
+<<<<<<< HEAD
     "mongoose": "^5.5.9",
     "morgan": "~1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
+=======
+    "express-ws": "^4.0.0",
+    "mongoose": "^5.5.9",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.3"
+>>>>>>> fcedf91b7ecbcf1099a54f0b99f6da772a133ba9
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
