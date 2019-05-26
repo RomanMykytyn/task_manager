@@ -3,9 +3,12 @@ var router = express.Router();
 var path = require('path');
 var User = require('../models/user');
 var passport = require('passport');
+var app = require('../app');
+
 
 /* GET home page. */
 router.get('/', checkAuthentication, function(req, res, next) {
+  res.cookie('nameCurrentUser', req.user.username);
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
@@ -50,4 +53,13 @@ router.post('/', function(req, res, next) {
   }
 })
 
+async function wsHandler() {
+  var x = {'listUsers' : await User.find({}, '-_id username')}
+  console.log(x);
+  return x
+}
+
+wsHandler();
+
 module.exports = router;
+module.exports.data = wsHandler;

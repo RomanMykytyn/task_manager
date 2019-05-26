@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('task-manager:server');
 var http = require('http');
-
+var wsHandler = require('../routes/index')
 /**
  * Get port from environment and store in Express.
  */
@@ -24,10 +24,15 @@ var server = http.createServer(app);
 var expressWs = require('express-ws')(app, server);
 
 app.ws('/', function(ws, req, next) {
-  ws.on('message', function(msg) {
-    console.log('msg:', msg)
-  })
-})
+  ws.on('message', async function(msg) {
+    console.log('msg:', msg);
+    var x = await wsHandler.data();
+    console.log(x);
+    ws.send(JSON.stringify(x));
+  });
+});
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
