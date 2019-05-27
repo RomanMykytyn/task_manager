@@ -61,7 +61,10 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.get('/exit', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
 
 module.exports = app;
