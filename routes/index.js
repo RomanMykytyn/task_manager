@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var User = require('../models/user');
+var Task = require('../models/task');
 var passport = require('passport');
 var app = require('../app');
 
@@ -54,7 +55,8 @@ router.post('/', function(req, res, next) {
 })
 
 async function wsHandler() {
-  var x = {'listUsers' : await User.find({}, '-_id username')}
+  var x = {'listUsers' : await User.find({}, '-_id username')};
+  x.listTask = await Task.find({});
   console.log(x);
   return x
 }

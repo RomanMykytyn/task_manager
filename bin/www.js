@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('task-manager:server');
 var http = require('http');
 var wsHandler = require('../routes/index')
+var Task = require('../models/task');
 /**
  * Get port from environment and store in Express.
  */
@@ -26,6 +27,10 @@ var expressWs = require('express-ws')(app, server);
 app.ws('/', function(ws, req, next) {
   ws.on('message', async function(msg) {
     console.log('msg:', msg);
+    if (msg !== 'Hello Server!') {
+      var newTask = new Task(JSON.parse(msg).newTask);
+      await newTask.save();
+    }
     var x = await wsHandler.data();
     console.log(x);
     ws.send(JSON.stringify(x));
