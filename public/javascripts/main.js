@@ -1,4 +1,5 @@
-const socket = new WebSocket('ws://roman-task-manager.herokuapp.com:3000');
+var host = location.origin.replace(/^http/, 'ws');
+const socket = new WebSocket(host);
 
 class App extends React.Component {
   constructor() {
