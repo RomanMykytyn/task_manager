@@ -128,7 +128,7 @@ class ModalForm extends React.Component {
         <label htmlFor="select_field">Select users:</label><br />
         <select multiple size="3" name="select" id="select_field" className="select" onChange={this.handleChange}>
             {this.props.listUsers.map(el => (<option key={el._id}>{el.username}</option>))}</select><br /><br />
-        <label htmlFor="textarea_field">Description:</label><br />
+        <label htmlFor="textarea_field">Description(CTRL for multiple choise):</label><br />
         <textarea value={this.state.description} name="description" id="textarea_field" rows="4" cols="40" maxLength="150"
             className="textarea" onChange={this.handleChange}></textarea><br /><br />
         <input type="button" value="Add" name="type_button" className="btn" onClick={this.submitForm}/>
