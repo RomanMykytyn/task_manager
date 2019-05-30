@@ -55,13 +55,11 @@ router.post('/', function(req, res, next) {
 })
 
 async function wsHandler() {
-  var x = {'listUsers' : await User.find({}, '-_id username')};
+  var x = {'listUsers' : await User.find({}, 'username')};
   x.listTask = await Task.find({});
   console.log(x);
   return x
 }
-
-wsHandler();
 
 module.exports = router;
 module.exports.data = wsHandler;

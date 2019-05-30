@@ -138,3 +138,73 @@ background:#3594D2;
   background: rgba(0,0,0,0.5);
   z-index:100;
 }
+
+.taskbox {
+  font-family: serif;
+  font-size: 18px;
+  text-align: left;
+  border: 5px solid #2980b9;
+  border-radius: 8px;
+  background-color: white;
+  width: 600px;
+  margin: 20px auto 20px auto;
+
+}
+
+.titlebox {
+  border-bottom: 2px solid #2980b9;
+  padding: 5px;
+}
+
+.foruserbox {
+  border-bottom: 2px solid #2980b9;
+  padding: 5px;
+}
+
+.descriptionbox {
+  border-bottom: 2px solid #2980b9;
+  padding: 5px;
+}
+
+.first {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+}
+
+.buttonbox {
+  padding: 5px;
+}
+
+.btn3 {
+  cursor: pointer;
+  background: darkgreen;
+  width:125px;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: #27ae60 1px solid;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:150px;
+  font-weight:800;
+  font-size:0.8em;
+}
+
+.btn4 {
+  cursor: pointer;
+  background: darkred;
+  width:125px;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  border-radius:4px;
+  border: #27ae60 1px solid;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:16px;
+  font-weight:800;
+  font-size:0.8em;
+}

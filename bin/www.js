@@ -23,17 +23,31 @@ app.set('port', port);
 var server = http.createServer(app);
 
 var expressWs = require('express-ws')(app, server);
+var aWss = expressWs.getWss('/');
 
 app.ws('/', function(ws, req, next) {
   ws.on('message', async function(msg) {
     console.log('msg:', msg);
     if (msg !== 'Hello Server!') {
-      var newTask = new Task(JSON.parse(msg).newTask);
-      await newTask.save();
+      var message = JSON.parse(msg);
+      if (message.newTask !== undefined) {
+        var newTask = new Task(message.newTask);
+        await newTask.save();
+      }
+      if (message.editTask !== undefined) {
+        var update = message.editTask;
+        await Task.findByIdAndUpdate(update.id, update);
+      }
+      if (message.deleteTask !== undefined) {
+        await Task.findByIdAndRemove(message.deleteTask);
+      }
     }
     var x = await wsHandler.data();
     console.log(x);
-    ws.send(JSON.stringify(x));
+    //ws.send(JSON.stringify(x));
+    aWss.clients.forEach(function (client) {
+     client.send(JSON.stringify(x));
+    });
   });
 });
 
