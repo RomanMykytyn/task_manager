@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/task_manager');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/task_manager');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
